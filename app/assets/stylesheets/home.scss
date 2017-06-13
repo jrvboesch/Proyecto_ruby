@@ -1,0 +1,104 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$mycolor2: #5d8000;
+$mycolor: #cbd8a7;
+.home{
+	.carousel{
+		.carousel-inner{
+			height: 478px;
+			.item{
+				.carousel-caption{
+					top: 15%;
+					color: #0a0a0a;
+					font-size: 30px;
+					font-weight: lighter;
+					.bold{
+						font-weight: 900;
+					}
+				}
+			}
+			.form{
+				position: absolute;
+				top: 55%;
+				left: 50%;
+				margin-left: -156px;
+				a{
+					font-size: 24px;
+			    	padding: 20px 91px;
+					background: #f7b231;
+					background: linear-gradient(to bottom,#f7b231 0,#de9440 100%);
+					border-top-color: #f7b231;
+					border-bottom: 3px solid #c68f42;
+					font-weight: 600;
+				}
+				.search{
+					position: relative;
+					margin: 20px 0px;
+
+					&:before{
+						color: #999;
+						content: "\f002";
+						display: block;
+						font-family: icomoon;
+						font-size: 15px;
+						left: 1rem;
+						position: absolute;
+						top: .625rem;
+						z-index: 1;
+					}
+					input{
+						padding: 8px 30px;
+					}
+				}
+				
+			}
+		}
+	}
+	.categories{
+		text-align: center;
+		color: $mycolor2;
+		a {
+			font-size: 60px;
+			color: $mycolor;
+			text-decoration: none;
+			&:hover{
+				color: $mycolor2;
+			}
+		}
+	}
+	.categories-desc{
+		color: $mycolor2;
+		.thumbnail{
+			    text-align: center;
+			    padding-top: 20px;
+			    .caption{
+					text-align: left;
+					color: #384d00;
+					h3{
+						color: $mycolor!important;
+						span{
+							color: $mycolor2;
+						}
+					}
+					.overlay{
+						background-color: white;
+						margin-top: -60px;
+						opacity: 0.8;
+						height: 50px;
+					}
+					.progress-bar{
+						background: $mycolor2;
+					}
+					a{
+						color: $mycolor2;
+					}
+			    }
+		}
+		
+
+	}
+	
+}
+	

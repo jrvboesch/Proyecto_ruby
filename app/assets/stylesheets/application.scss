@@ -1,0 +1,212 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "icons";
+@import "iconmoon";
+
+
+
+@import "home";
+
+$mycolor: #5d8000;
+body{
+	background: #f9faf5;
+	padding-top: 56px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: Lato,Arial,sans-serif;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #333;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+main{
+	flex: 1 0 auto;
+}
+
+/* forms*/
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}
+
+// navbar
+.navbar{
+	height: 56px;
+	background: #fff;
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.25);
+
+	.navbar-brand{
+		padding: 9px;
+		img{
+			height: 35px;
+		}
+	}
+	.navbar-right{
+		a{
+			color: $mycolor!important;
+			font-size: 17px;
+			&:hover{
+				color: #384d00!important;
+				background: none;
+			}
+		}
+	}
+	.dropdown{
+		button{
+			padding: 0 10px;
+			width: 50px;
+			height: 40px;
+			margin-top: 5px;
+			span{
+				width: 22px;
+				height: 3px;
+				background: $mycolor;
+				&:before {
+					height: 3px;
+					top: -7px;
+					background: $mycolor;
+				}
+
+				&:after{
+					height: 3px;
+					top: 7px;
+					background: $mycolor;
+				}
+			}
+			&.tcon-transform{
+				span{
+					margin-left: -10px;
+				}
+			}
+		}
+		&.open{
+			.dropdown-toggle{
+				background-color: #fff!important;
+				box-shadow: 0 1px 1px 0 rgba(0,0,0,.25)!important;
+			}
+			.dropdown-menu{
+				border-top: none;
+				box-shadow: 0 10px 12px rgba(0, 0, 0, 0.175);
+				padding: 24px 55px 5px 5px;
+			}
+		}
+
+	}
+}
+
+// footer
+
+footer{
+	.bot{
+		margin-bottom: 80px;
+		.links{
+			li{
+				color: #666;
+				a{
+					color: $mycolor2;
+					&:hover{
+						color: #384d00!important;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+		.social{
+			font-size: 25px;
+			a{
+				text-decoration: none;
+			}
+			.facebook{
+				color: #3b579d!important;
+			}
+			.twitter{
+				color: #55acee!important;
+			}
+			.instagram{
+				color: #333!important;
+			}
+		}
+	}
+	li{
+		list-style: none;
+	}
+	.awards{
+		height: 61px;
+    	width: 61px;
+		background-image: asset-url("icon.png");
+		background-size: 62px 418px;
+		&.trophy{
+			background-position: 0 -1px;
+		}
+		&.lock{
+			background-position: 0 -88px;
+		}
+		&.clock{
+			background-position: 0 655px;
+		}
+	}
+
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
