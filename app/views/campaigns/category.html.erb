@@ -1,0 +1,96 @@
+<h1>
+	<% if @category == "Salud" %>
+		Salud
+	<% end %>
+	<% if @category == "Educacion" %>
+		Educacion
+	<% end %>
+	<% if @category == "Recreacion" %>
+		Recreacion
+	<% end %>
+	<% if @category == "Religion" %>
+		Religion
+	<% end %>
+	<% if @category == "Viaje" %>
+		Viaje
+	<% end %>
+</h1>
+
+<% if flash[:notice] %>
+	<div>
+		<%= flash[:notice] %>
+	</div>
+<% end %>
+
+<div>
+		<div>
+			<% if @category == "Salud" %>
+		   	Imagen Salud
+		  <% end %>
+		  <% if @category == "Educacion" %>
+		    Imagen Educacion
+		  <% end %>
+		  <% if @category == "Recreacion" %>
+		    Imagen Recreacion
+		  <% end %>
+		  <% if @category == "Religion" %>
+		   	Imagen Religion
+		  <% end %>
+		  <% if @category == "Viaje" %>
+		    Imagen Viaje
+		  <% end %>
+		</div>
+
+			<% if @category == "Salud" %>
+			<p>
+				Buscar mantener un equilibrio en nuestro diario vivir deberia ser un objetivo constante en la vida de cada uno de nosotros. Cualquier camapaña que tenga como objetivo mejorar la salud de nuestros clientes es bienvenida en Let's GoGo.
+
+			<% end %>
+			<% if @category == "Educacion" %>
+				<p>
+					El saber es poder. En Let's Go Go motivamos a nuestros clientes a emprender un viaje buscando absorber la mayor cantidad de conocimientos y expandir sus barreras, para sobresalir en la sociedad como ningun otro. Un libro, una bibliografia de tu autor favorito incluso suscripciones para paginas que proveen tutoriales, crea tu campaña y crece junto a nosotros.
+				</p>
+			<% end %>
+			<% if @category == "Recreacion" %>
+				<p>
+					Una nueva consola, un instrumento, un nuevo calzado para practicar tu deporte favorito, en Let's GoGo apoyamos a todos para obtener sus deseos. Porque siempre es bueno buscar relajar nuestra mente y engrandecer nuestros talentos.
+				</p>
+			<% end %>
+			<% if @category == "Religion" %>
+				<p>
+					La espiritualidad de cada uno de nuestros clientes es importante, si deseas crear una campaña para cualquier religion y ayudar a tu comunidad este es el lugar perfecto para ti.
+				</p>
+			<% end %>
+			<% if @category == "Viaje" %>
+				<p>
+					Deseas emprender al otro lado del mundo? o simplemente conocer la ciudad de al lado? En Lets GoGo puedes buscar la ayuda que necesitas, Los Alpes, el Everest o Copan Ruinas, conoce al mundo y asi mismo descubrete a ti mismo. Un universo lleno de maravillas te esta esperando. Ve y buscalo.
+				</p>
+			<% end %>
+</div>
+
+<table>
+	<thead>
+		<tr>
+			<th>Titulo</th>
+			<th>Reseña</th>
+			<th>Categoria</th>
+			<th>Meta</th>
+			<th>Monto Donado</th>
+			<th>Creado En</th>
+			<th>Usuario Creador</th>
+		</tr>
+	</thead>
+	<tbody>
+			<%- @campaigns.each do |f| %>
+				<tr>
+					<td><%= link_to f.titulo, campaign_path(f) %></td>
+					<td><%= f.resena %></td>
+					<td><%= f.category %></td>
+					<td><%= f.meta %></td>
+					<td>Lps. <%= cant_recuadada(f.donations) %></td>
+					<td><%= format_date(f.created_at) %></td>
+					<td><%= User.find(f.user_id).name %></td>
+				</tr>
+			<%- end %>
+	</tbody>
+</table>

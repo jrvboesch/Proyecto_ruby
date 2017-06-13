@@ -1,0 +1,38 @@
+
+<h1><%=@current_user.name %></h1>
+<% if flash[:notice] %>
+  <div style="background: yellow">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<ul>
+  <li>
+    ID:
+    <light><%= @current_user.id %></light>
+  </li>
+	<li>
+		Nombre:
+		<light><%= @current_user.name %></light>
+	</li>
+	<li>
+		Correo:
+		<light><%= @current_user.email %></light>
+	</li>
+  <li>
+		Ciudad:
+		<light><%= @current_user.ciudad %></light>
+	</li>
+  <li>
+		Pais:
+		<light><%= @current_user.pais %></light>
+	</li>
+
+  <li>
+    Recibir Correos:
+    <light><%= @current_user.receive_email %></light>
+  </li>
+</ul>
+
+
+<p style="display: inline-block"> <%= link_to "Edit", edit_profile_path, class:"btn btn-default btn-lg" %> </p>
+<p style="display: inline-block"> <%= link_to "Edit Password", password_profile_path, class:"btn btn-default btn-lg" %> </p>
