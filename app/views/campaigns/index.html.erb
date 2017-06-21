@@ -6,29 +6,30 @@
 	</div>
 <% end %>
 
-<table>
-	<thead>
-		<tr>
-			<th>Titulo</th>
-			<th>Reseña</th>
-			<th>Categoria</th>
-			<th>Meta</th>
-			<th>Monto Donado</th>
-			<th>Creado En</th>
-			<th>Usuario Creador</th>
-		</tr>
-	</thead>
-	<tbody>
+
+<div class="categories-desc">
+    <div class="row">
+        
 		<%- @campaigns.each do |f| %>
-			<tr>
-				<td><%= link_to f.titulo, campaign_path(f) %></td>
-				<td><%= f.resena %></td>
-				<td><%= link_to f.category, category_path(f.category) %></td>
-				<td><%= f.meta %></td>
-				<td>Lps. <%= cant_recuadada(f.donations) %></td>
-				<td><%= format_date(f.created_at) %></td>
-				<td><%= User.find(f.user_id).name %></td>
-			</tr>
+	        <div class="col-sm-6 col-md-4">
+	            <div class="thumbnail">
+	            	<%= image_tag f.image, alt: "Medical" %>
+	                <div class="caption">
+	                    <div class="progress">
+	                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <%=porciento_completado(f) * 100 %>%">
+      							<%= number_to_percentage(porciento_completado(f) * 100, precision: 0)  %>
+	                        </div>
+	                    </div>
+	                    <h3><%= link_to f.titulo, campaign_path(f) %></h3>
+	                    <p><%= f.resena %></p>
+	                    <div class="overlay"></div>
+                        <%= link_to campaign_path(f), class: "btn btn-link" do %>
+                            <span class="icon-plus"></span> Read More
+                        <% end %>
+	                    
+	                </div>
+	            </div>
+	        </div>
 		<%- end %>
-	</tbody>
-</table>
+	</div>
+</div>

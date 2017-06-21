@@ -1,15 +1,12 @@
 <% if donations.any? %>
 	<div>
 		<h2>Donations: </h2>
-		<table>
+		<table class="table table-striped">
 			<thead>
 				<th>Autor</th>
 				<th>Monto Hecho</th>
-        <th>Mensaje</th>
-        <th>Fecha Creado</th>
-        <th>
-
-        </th>
+		        <th>Mensaje</th>
+		        <th>Fecha Creado</th>
 			</thead>
 			<tbody>
 				<%= render donations %>
@@ -17,5 +14,6 @@
 		</table>
 	</div>
 <% else %>
-	<p><em>No hay donations.</em></p>
+	<p><em>No donations.</em></p>
 <% end %>
+<%= link_to "New Donation", new_campaign_donation_path(@campaign.id), class:"btn btn-default btn-lg" %> 

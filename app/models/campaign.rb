@@ -32,7 +32,7 @@ class Campaign < ApplicationRecord
 
   def default_image
     if image == ""
-      self.image='https://upload.wikimedia.org/wikipedia/commons/d/d1/Black_circle.png'
+      self.image='https://www.hsjaa.com/images/joomlart/demo/default.jpg'
     end
   end
 
