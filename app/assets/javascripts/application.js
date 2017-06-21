@@ -21,6 +21,7 @@ $(document).ready(function(){
 		interval: 2000
 	})
 	transformicons.add('.tcon');
+  
 });
 
 (function (root, factory) {

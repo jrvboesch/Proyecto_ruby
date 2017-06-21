@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="form">
-                <a href="#" class="btn btn-primary btn-lg">Start a Campaign</a>
+                <%= link_to "Start a Campaign", new_campaign_path, class: "btn btn-primary btn-lg" %>
                 <div class="form-group search">
                     <input type="text" class="form-control" placeholder="Search by name, title, or city"/>
                 </div>
@@ -44,7 +44,7 @@
         <div class="panel-body">
             <div class="row categories">
                 <div class="item col-md-2 col-md-offset-1">
-                    <%= link_to category_path("Salud"), class: "col-md-12" do %>
+                    <%= link_to category_path("Medical"), class: "col-md-12" do %>
                         <span class="icon-heart"></span>
                     <% end %>
                     <span class="title">
@@ -52,7 +52,7 @@
                     </span>
                 </div>
                 <div class="item col-md-2">
-                    <%= link_to category_path("Salud"), class: "col-md-12" do %>
+                    <%= link_to category_path("Sports"), class: "col-md-12" do %>
                         <span class="icon-futbol-o"></span>
                     <% end %>
                     <span class="title">
@@ -60,7 +60,7 @@
                     </span>
                 </div>
                 <div class="item col-md-2">
-                    <%= link_to category_path("Salud"), class: "col-md-12" do %>
+                    <%= link_to category_path("Events"), class: "col-md-12" do %>
                         <span class="icon-calendar-o"></span>
                     <% end %>
                     <span class="title">
@@ -68,7 +68,7 @@
                     </span>
                 </div>
                 <div class="item col-md-2">
-                    <%= link_to category_path("Salud"), class: "col-md-12" do %>
+                    <%= link_to category_path("Animals"), class: "col-md-12" do %>
                         <span class="icon-paw"></span>
                     <% end %>
                     <span class="title">
@@ -76,7 +76,7 @@
                     </span>
                 </div>
                 <div class="item col-md-2">
-                    <%= link_to category_path("Salud"), class: "col-md-12" do %>
+                    <%= link_to category_path("Education"), class: "col-md-12" do %>
                         <span class="icon-book"></span>
                     <% end %>
                     <span class="title">
@@ -89,97 +89,46 @@
     <div class="categories-desc">
         <div class="row">
             
+            <%- @campaigns.each do |f| %>
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                    <img src="<%= image_url('0.jpeg') %>" alt="Medical">
+                    <%= image_tag f.image, alt: "Medical" %>
                     <div class="caption">
                         <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 33%;">
-                                33%
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <%=porciento_completado(f) * 100 %>%">
+                                <%= number_to_percentage(porciento_completado(f) * 100, precision: 0)  %>
                             </div>
                         </div>
-                        <h3><span class="icon-heart"></span> Lorem ipsum</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h3>
+                        <%= link_to campaign_path(f) do %>
+                            <% if f.category == "Medical" %>
+                                <span class="icon-heart"></span> f.titulo
+                            <% end %>
+                            <% if f.category == "Sports" %>
+                                <span class="icon-futbol-o"></span> f.titulo
+                            <% end %>
+                            <% if f.category == "Events" %>
+                                <span class="icon-calendar-o"></span> f.titulo
+                            <% end %>
+                            <% if f.category == "Animals" %>
+                                <span class="icon-paw"></span> f.titulo
+                            <% end %>
+                            <% if f.category == "Education" %>
+                                <span class="icon-book"></span> f.titulo
+                            <% end %>
+                        <% end %>
+                                
+                        </h3>
+                        <p><%= f.resena %></p>
                         <div class="overlay"></div>
-                        <a href="#" class="btn btn-link" role="button">
+                        <%= link_to campaign_path(f), class: "btn btn-link" do %>
                             <span class="icon-plus"></span> Read More
-                        </a>
+                        <% end %>
                         
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="<%= image_url('0.jpeg') %>" alt="Sports">
-                    <div class="caption">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                                40%
-                            </div>
-                        </div>
-                        <h3><span class="icon-futbol-o"></span> Lorem ipsum</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <div class="overlay"></div>
-                        <a href="#" class="btn btn-link" role="button">
-                            <span class="icon-plus"></span> Read More
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="<%= image_url('0.jpeg') %>" alt="Events">
-                    <div class="caption">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 95%;">
-                                95%
-                            </div>
-                        </div>
-                        <h3><span class="icon-calendar-o"></span> Lorem ipsum</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <div class="overlay"></div>
-                        <a href="#" class="btn btn-link" role="button">
-                            <span class="icon-plus"></span> Read More
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="<%= image_url('0.jpeg') %>" alt="Animals">
-                    <div class="caption">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
-                                10%
-                            </div>
-                        </div>
-                        <h3><span class="icon-paw"></span> Lorem ipsum</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <div class="overlay"></div>
-                        <a href="#" class="btn btn-link" role="button">
-                            <span class="icon-plus"></span> Read More
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <img src="<%= image_url('0.jpeg') %>" alt="Education">
-                    <div class="caption">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
-                                30%
-                            </div>
-                        </div>
-                        <h3><span class="icon-book"></span> Lorem ipsum</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                        <div class="overlay"></div>
-                        <a href="#" class="btn btn-link" role="button">
-                            <span class="icon-plus"></span> Read More
-                        </a>
-                    </div>
-                </div>
-            </div>
+        <%- end %>
         </div>
     </div>
         

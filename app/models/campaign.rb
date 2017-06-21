@@ -2,7 +2,7 @@ class Campaign < ApplicationRecord
   scope :active, ->{where(["finalizado_en >= ?", Date.today])}
 
   def self.categories
-    ["Salud", "Recreacion", "Religion", "Educacion", "Viaje"]
+    ["Medical", "Sports", "Events", "Animals", "Education"]
   end
 
   has_many :comments
