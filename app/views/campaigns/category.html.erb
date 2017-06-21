@@ -1,20 +1,3 @@
-<h1>
-	<% if @category == "Salud" %>
-		Salud
-	<% end %>
-	<% if @category == "Educacion" %>
-		Educacion
-	<% end %>
-	<% if @category == "Recreacion" %>
-		Recreacion
-	<% end %>
-	<% if @category == "Religion" %>
-		Religion
-	<% end %>
-	<% if @category == "Viaje" %>
-		Viaje
-	<% end %>
-</h1>
 
 <% if flash[:notice] %>
 	<div>
@@ -22,50 +5,77 @@
 	</div>
 <% end %>
 
-<div>
-		<div>
-			<% if @category == "Salud" %>
-		   	Imagen Salud
-		  <% end %>
-		  <% if @category == "Educacion" %>
-		    Imagen Educacion
-		  <% end %>
-		  <% if @category == "Recreacion" %>
-		    Imagen Recreacion
-		  <% end %>
-		  <% if @category == "Religion" %>
-		   	Imagen Religion
-		  <% end %>
-		  <% if @category == "Viaje" %>
-		    Imagen Viaje
-		  <% end %>
-		</div>
+<div class="jumbotron">
+	<div class="container">
+		<h1>
+			<% if @category == "Medical" %>
+				<span class="icon-heart"></span> Medical
+			<% end %>
+			<% if @category == "Sports" %>
+				<span class="icon-futbol-o"></span> Sports
+			<% end %>
+			<% if @category == "Events" %>
+				<span class="icon-calendar-o"></span> Events
+			<% end %>
+			<% if @category == "Animals" %>
+				<span class="icon-paw"></span> Animals
+			<% end %>
+			<% if @category == "Education" %>
+				<span class="icon-book"></span> Education
+			<% end %>
+		</h1>
 
-			<% if @category == "Salud" %>
+		<% if @category == "Medical" %>
 			<p>
-				Buscar mantener un equilibrio en nuestro diario vivir deberia ser un objetivo constante en la vida de cada uno de nosotros. Cualquier camapaña que tenga como objetivo mejorar la salud de nuestros clientes es bienvenida en Let's GoGo.
-
-			<% end %>
-			<% if @category == "Educacion" %>
-				<p>
-					El saber es poder. En Let's Go Go motivamos a nuestros clientes a emprender un viaje buscando absorber la mayor cantidad de conocimientos y expandir sus barreras, para sobresalir en la sociedad como ningun otro. Un libro, una bibliografia de tu autor favorito incluso suscripciones para paginas que proveen tutoriales, crea tu campaña y crece junto a nosotros.
-				</p>
-			<% end %>
-			<% if @category == "Recreacion" %>
-				<p>
-					Una nueva consola, un instrumento, un nuevo calzado para practicar tu deporte favorito, en Let's GoGo apoyamos a todos para obtener sus deseos. Porque siempre es bueno buscar relajar nuestra mente y engrandecer nuestros talentos.
-				</p>
-			<% end %>
-			<% if @category == "Religion" %>
-				<p>
-					La espiritualidad de cada uno de nuestros clientes es importante, si deseas crear una campaña para cualquier religion y ayudar a tu comunidad este es el lugar perfecto para ti.
-				</p>
-			<% end %>
-			<% if @category == "Viaje" %>
-				<p>
-					Deseas emprender al otro lado del mundo? o simplemente conocer la ciudad de al lado? En Lets GoGo puedes buscar la ayuda que necesitas, Los Alpes, el Everest o Copan Ruinas, conoce al mundo y asi mismo descubrete a ti mismo. Un universo lleno de maravillas te esta esperando. Ve y buscalo.
-				</p>
-			<% end %>
+				
+				Raise money for medical bills and expenses. Fundraising for medical bills and related medical expenses.
+				We have raised over $3 Billion for people in need.
+				#1 for Medical, Illness &amp; Healing fundraising
+				Set up a Powerful Fundraiser in less than 30 Seconds.
+				Get real results fast!
+			</p>
+		<% end %>
+		<% if @category == "Sports" %>
+			<p>
+				
+				Raise money for sports teams and clubs.
+				We have raised over $3 Billion for people in need.
+				#1 for Sports, Teams &amp; Clubs fundraising
+				Set up a Powerful Fundraiser in less than 30 Seconds.
+				Get real results fast!
+			</p>
+		<% end %>
+		<% if @category == "Events" %>
+			<p>
+				
+				Raise money for weddings, parties, showers, &amp; more.
+				We have raised over $3 Billion for people in need.
+				#1 for Celebrations &amp; Events fundraising
+				Set up a Powerful Fundraiser in less than 30 Seconds.
+				Get real results fast!
+			</p>
+		<% end %>
+		<% if @category == "Animals" %>
+			<p>
+				
+				Raise money for your favorite pets
+				We have raised over $3 Billion for people in need.
+				#1 for Animals &amp; Pets fundraising
+				Set up a Powerful Fundraiser in less than 30 Seconds.
+				Get real results fast!
+			</p>
+		<% end %>
+		<% if @category == "Education" %>
+			<p>
+				
+				Raise money for education supplies and expenses.
+				We have raised over $3 Billion for people in need.
+				#1 for Education &amp; Learning fundraising
+				Set up a Powerful Fundraiser in less than 30 Seconds.
+				Get real results fast!
+			</p>
+		<% end %>
+	</div>
 </div>
 
 <table>
@@ -94,3 +104,45 @@
 			<%- end %>
 	</tbody>
 </table>
+
+<div class="categories-desc">
+    <div class="row">
+        
+		<%- @campaigns.each do |f| %>
+	        <div class="col-sm-6 col-md-4">
+	            <div class="thumbnail">
+	            	<%= image_tag f.image, alt: "Medical" %>
+	                <div class="caption">
+	                    <div class="progress">
+	                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <%=porciento_completado(f) * 100 %>%">
+      							<%= number_to_percentage(porciento_completado(f) * 100, precision: 0)  %>
+	                        </div>
+	                    </div>
+	                    <h3><%= link_to f.titulo, campaign_path(f) %></h3>
+	                    <p><%= f.resena %></p>
+	                    <div class="overlay"></div>
+                        <%= link_to campaign_path(f), class: "btn btn-link" do %>
+                            <span class="icon-plus"></span> Read More
+                        <% end %>
+	                    
+	                </div>
+	            </div>
+	        </div>
+		<%- end %>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
